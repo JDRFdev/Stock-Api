@@ -2,6 +2,7 @@ package com.Juan.Stock.controller;
 
 import com.Juan.Stock.model.Product;
 import com.Juan.Stock.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ProductController {
         return productService.getProductById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
     @PostMapping
-    public Product saveProduct(@RequestBody Product product){
+    public Product saveProduct(@Valid @RequestBody Product product){
         return productService.saveProduct(product);
     }
     @DeleteMapping("/{id}")
