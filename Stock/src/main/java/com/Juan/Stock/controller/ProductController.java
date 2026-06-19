@@ -37,7 +37,7 @@ public class ProductController {
 
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product product){
+    public ResponseEntity<Product> updateProduct(@PathVariable int id, @Valid @RequestBody Product product){
         return productService.updateProduct(id,product).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
